@@ -162,6 +162,7 @@ abstract class Parser
             $this->checkItemUrl($feed, $item);
 
             $this->findItemTitle($entry, $item);
+            $this->findItemDescription($entry,$item);
             $this->findItemContent($entry, $item);
 
             // Id generation can use the item url/title/content (order is important)
