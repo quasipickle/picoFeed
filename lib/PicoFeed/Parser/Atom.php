@@ -205,6 +205,22 @@ class Atom extends Parser
     }
 
     /**
+     * Find the item summary/description
+     *
+     * @access public
+     * @param  SimpleXMLElement   $entry   Feed item
+     * @param  \PicoFeed\Parser\Item     $item    Item object
+     */
+    public function findItemDescription(SimpleXMLElement $entry, Item $item)
+    {
+        if(isset($entry->summary) && ! empty($entry->summary)){
+            return (string) $entry->summary;
+        }
+
+        return '';
+    }
+
+    /**
      * Find the item URL
      *
      * @access public
