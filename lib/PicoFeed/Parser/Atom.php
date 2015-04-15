@@ -214,10 +214,11 @@ class Atom extends Parser
     public function findItemDescription(SimpleXMLElement $entry, Item $item)
     {
         if(isset($entry->summary) && ! empty($entry->summary)){
-            return (string) $entry->summary;
+            $item->description = $entry->summary;
         }
-
-        return '';
+        else{
+            $item->description = '';
+        }
     }
 
     /**
