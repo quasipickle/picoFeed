@@ -208,9 +208,11 @@ class Rss20 extends Parser
     public function findItemContent(SimpleXMLElement $entry, Item $item)
     {
         $content = XmlParser::getNamespaceValue($entry, $this->namespaces, 'encoded');
+        
         if (trim($content) === '' && $entry->description->count() > 0) {
             $content = (string) $entry->description;
         }
+        
         $item->content = $content;
     }
 
