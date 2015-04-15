@@ -217,6 +217,24 @@ class Rss20 extends Parser
     }
 
     /**
+     * Find the item description
+     *
+     * @access public
+     * @param  SimpleXMLElement          $entry   Feed item
+     * @param  \PicoFeed\Parser\Item     $item    Item object
+     */
+    public function findItemDescription(SimpleXMLElement $entry, Item $item)
+    {
+        $description = XmlParser::getNamespaceValue($entry, $this->namespaces, 'description');
+
+        if (trim($description) === '' && $entry->description->count() > 0) {
+            $description = (string) $entry->description;
+        }
+
+        $item->description = $description;
+    }
+    
+    /**
      * Find the item URL
      *
      * @access public
